@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WastedOnMusic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="Asset/22258-bat-icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        * { 
+            font-family: "Comfortaa", sans-serif;
+             font-optical-sizing: auto;
+             font-weight: 400;
+             .user-link {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.user-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.user-link:hover::after {
+  width: calc(100% - 20px);
+}
+
+/* Keyframes for text color animation */
+@keyframes textAnimation {
+  0% {
+    color: #4e54c8;
+  }
+  25% {
+    color: #8f94fb;
+  }
+  50% {
+    color: #4e54c8;
+  }
+  75% {
+    color: #8f94fb;
+  }
+  100% {
+    color: #4e54c8;
+  }
+}
+ font-style: normal;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .page-container {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .container {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .user-panel {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+        .song-input input {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            margin: 5px 0;
+            width: calc(100% - 12px);
+        }
+        .song-input input::placeholder {
+            color: gray;
+        }
+        .add-button, .calculate-button, .toggle-button {
+            background-color: #333;
+            color: white;
+            border: 2px dashed white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .calculate-button, .toggle-button {
+            border-radius: 5px;
+            padding: 5px 10px;
+            width: auto;
+            height: auto;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results div {
+            background-color: #333;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .user-link {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg, #4e54c8, #8f94fb, #4e54c8, #8f94fb);
+  background-size: 400% 400%;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+.user-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.user-link:hover::after {
+  width: calc(100% - 20px);
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+        .hidden {
+            display: none;
+        }
+        #user-image {
+            border-radius: 50%;
+        }
+        #username {
+            background-color: black;
+            color: #fff;
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-weight: 780;
+            font-size: 20px;
+            text-decoration: none;
+            transition: border-bottom 0.3s ease;
+            display: inline-block;
+        }
+        #username:hover {
+            border-bottom: 1px solid #fff;
+        }
+        #username:visited {
+            color: #fff;
+        }
+        .creator-panel {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    max-width: 250px;
+}
+
+.creator-panel .panel-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.creator-panel h2 {
+    font-size: 18px;
+    margin: 0;
+    margin-right: 10px; /* Adjust this margin as per your preference */
+}
+
+.creator-panel h3 {
+    margin: 0;
+    display: inline-block; /* Ensures the username link starts on a new line */
+}
+
+.creator-panel h3 a {
+    color: rgb(238, 149, 98);
+    text-decoration: none;
+    transition: 0.5s ease-in-out all;
+}
+.creator-panel h3 a:hover {
+    color: rgb(238, 149, 98);
+    text-shadow: 0 0 10px rgb(194, 111, 63);;
+    text-decoration: none;
+    transition: 0.5s ease-in-out all;
+}
+.song-title {
+    font-weight: bold;
+    color: #cb8be9;
+}
+
+.artist-name {
+    color: #cf8d6e;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="user-panel" id="user-panel">
+        </div>
+        <div id="user-info">
+            <img id="user-image" src="" alt="User Image" class="hidden">
+            <div id="user-details" class="hidden">
+               <p><span id="top-track-title" class="song-title"></span></p>
+               <p><span id="top-track-artist" class="artist-name"></span></p>
+               <p id="total-plays"></p>
+                <p id="weekly-plays"></p>
+            </div>
+        </div>
+        <div class="container">
+            <h1>Wasted on Music</h1>
+            <div class="toggle-button" id="toggle-mode" onclick="toggleMode()">LastFM</div>
+            <div id="manual-mode">
+                <div id="song-container"></div>
+                <div class="add-button" onclick="addSongInput()">+</div>
+                <div class="calculate-button" onclick="calculateTotal()">Calculate</div>
+            </div>
+            <div id="lastfm-mode" class="hidden">
+                <input type="text" id="username" placeholder="Enter Last.fm username" role="presentation" autocomplete="off">
+                <div class="calculate-button" onclick="fetchLastFmData()">Fetch Data</div>
+            </div>
+            <div class="results">
+                <div>Days: <span id="total-days">0</span></div>
+                <div>Hours: <span id="total-hours">0</span></div>
+                <div>Minutes: <span id="total-minutes">0</span></div>
+                <div>Seconds: <span id="total-seconds">0</span></div>
+                <div>Total Hours: <span id="total-hour-output">0</span></div>
+            </div>
+        </div>
+        <div class="creator-panel">
+            <img src="Asset/creator.webp" alt="Icon" class="panel-icon">
+            <h2>Developed by</h2>
+            <h3><a href="#" id="developer-link">Pu</a></h3>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
